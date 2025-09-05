@@ -1,0 +1,51 @@
+export const members = [
+  {
+    name: "Dwayne Johnson",
+    plan: "Regular Gym",
+    opinion: `"I train hard at the gym to stay in shape and look my best. Consistency is the key to everything."`,
+    start: 5,
+    image: "/testimonial/dwayne-jhnson.jpeg",
+  },
+  {
+    name: "Jennifer Lopez",
+    plan: "Yoga Plan",
+    opinion: `"Yoga keeps me balanced and energized. It helps me stay focused both on stage and in life."`,
+    start: 4,
+    image: "/testimonial/jennifer-lopez.jpeg",
+  },
+  {
+    name: "Larry Wheels",
+    plan: "Powerlifting Gym",
+    opinion: `"For me, lifting heavy is not just about strength, it’s about pushing limits and building discipline."`,
+    start: 5,
+    image: "/testimonial/larry-wheels.jpeg",
+  },
+  {
+    name: "Mike Tyson",
+    plan: "Boxing Plan",
+    opinion: `"Even at 70, boxing keeps me sharp and alive. The discipline of the ring never leaves you."`,
+    start: 5,
+    image: "/testimonial/mike-tyson.jpg",
+  },
+  {
+    name: "Muhammad Ali",
+    plan: "Boxing Plan",
+    opinion: `"Boxing taught me resilience and self-belief. Every round was a chance to prove myself stronger."`,
+    start: 5,
+    image: "/testimonial/muhammad-ali.webp",
+  },
+  {
+    name: "Noah Ohlsen",
+    plan: "CrossFit Plan",
+    opinion: `"CrossFit challenges me daily with intensity and variety. It’s the perfect way to test my limits."`,
+    start: 5,
+    image: "/testimonial/noah-ohlsen.jpg",
+  },
+  {
+    name: "Tia-Clair Toomey",
+    plan: "CrossFit Plan",
+    opinion: `"CrossFit pushes me to be better every single day. The community and the workouts are unmatched."`,
+    start: 5,
+    image: "/testimonial/tia-clair-toomey.webp",
+  },
+];
