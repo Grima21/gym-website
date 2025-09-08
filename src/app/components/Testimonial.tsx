@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
@@ -28,10 +28,12 @@ export default function Testimonials() {
           <SwiperSlide key={idx}>
             <div className="bg-white p-6 rounded-2xl shadow-lg h-full flex flex-col">
               {/* Imagen redonda */}
-              <img
+              <Image
                 src={m.image}
                 alt={m.name}
                 className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
+                width={80}
+                height={80}
               />
               {/* Estrellas */}
               <div className="flex justify-center gap-1 mb-4">
@@ -47,7 +49,9 @@ export default function Testimonials() {
                 ))}
               </div>
               {/* Opinión */}
-              <p className="italic text-gray-700 mb-4">"{m.opinion}"</p>
+              <p className="italic text-gray-700 mb-4">
+                <q>{m.opinion}</q>
+              </p>
               {/* Nombre y plan */}
               <h3 className="font-bold text-yellow-500">{m.name}</h3>
               <span className="text-sm text-gray-500">{m.plan}</span>
