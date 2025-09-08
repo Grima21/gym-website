@@ -45,23 +45,23 @@ export default function Service() {
   const boxing = CardService.find((c) => c.id === 4)!;
 
   return (
-    <div className="max-w-screen-xl mx-auto">
+    <div className="max-w-screen-2xl mx-auto">
       <section
         className="
      
         mx-auto
         mt-16
         flex items-start
-        gap-[80px]              /* gap central izquierda ↔ derecha */
+        gap-[150px]              /* gap central izquierda ↔ derecha */
         "
-        style={{ width: `${functional.w + 80 + boxing.w}px` }} // ancho total exacto
+        style={{ width: `${functional.w + 100 + boxing.w}px` }} // ancho total exacto
       >
         {/* Grupo izquierdo: grid de 2 cols con gap de 46 y 72 */}
         <div
           className="
           grid
           [grid-template-columns:257.1px_247.52px]
-          gap-x-[46px] gap-y-[42px]
+          gap-x-[150px] gap-y-[20px]
         "
         >
           {/* TOP: Functional (ocupa 2 columnas) */}
@@ -85,14 +85,14 @@ export default function Service() {
           </span>
         </h2>
 
-        <div className="max-w-[1200px] mx-auto px-6 mt-10">
+        <div className="max-w-full mx-auto px-6 mt-10">
           {program.map((item) => (
             <div
               key={item.id}
               className="
         grid items-center
         grid-cols-[120px_1fr_1.2fr_32px]
-        gap-x-10
+        gap-x-20
         py-8
         border-t-2 border-white/30
       "

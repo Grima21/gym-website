@@ -31,7 +31,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="max-w-screen-xl mx-auto mt-20 mb-20">
+    <footer className="max-w-screen-2xl mx-auto mt-20 mb-20">
       <section className="w-full ">
         <div className="w-full flex justify-between mb-8">
           <p className="text-[#FFD60A] text-lg font-semibold">

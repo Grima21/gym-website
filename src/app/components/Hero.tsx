@@ -35,7 +35,7 @@ export default function Hero() {
   );
 
   return (
-    <section className="relative w-full mb-28" ref={heroRef}>
+    <section className="relative w-full mb-28 h-[1100px]" ref={heroRef}>
       {/* Fondo global (si no lo necesitas, puedes quitar este) */}
       <motion.div
         variants={fadeIn}

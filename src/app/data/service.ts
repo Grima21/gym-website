@@ -17,7 +17,7 @@ export const CardService: ServiceCard[] = [
       "Build strength, agility, and endurance with bodyweight-focused workouts.",
     image: "/img-service/gym.webp",
     alt: "Athlete doing push-ups in a gym",
-    w: 600,
+    w: 790,
     h: 235,
   },
   {
@@ -27,8 +27,8 @@ export const CardService: ServiceCard[] = [
       "Improve balance, reduce stress, and enhance mobility through guided yoga sessions.",
     image: "/img-service/yoga.webp",
     alt: "Woman doing yoga on a mat",
-    w: 280.1,
-    h: 320,
+    w: 380.1,
+    h: 345,
   },
   {
     id: 3,
@@ -37,8 +37,8 @@ export const CardService: ServiceCard[] = [
       "Push your limits with high-intensity workouts designed for real results.",
     image: "/img-service/crossfit.webp",
     alt: "Man lifting kettlebell",
-    w: 280,
-    h: 320,
+    w: 380,
+    h: 345,
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ export const CardService: ServiceCard[] = [
       "Train like a fighter with expert-led boxing sessions to boost confidence and power.",
     image: "/img-service/boxing.webp",
     alt: "Boxer throwing punch in the ring",
-    w: 438.26,
+    w: 538.26,
     h: 600,
   },
 ];

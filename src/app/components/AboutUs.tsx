@@ -27,8 +27,8 @@ export default function AboutUs() {
   ];
 
   return (
-    <section className="max-w-screen-xl  mx-auto mt-40 mb-28">
-      <div className="flex gap-8 ">
+    <section className="max-w-screen-2xl  mx-auto mt-40 mb-28">
+      <div className="mx-auto flex gap-16 justify-center items-center">
         {/* left */}
         <div className="max-w-[465px]">
           <h2 className="text-center text-3xl font-bold text-white tracking-wide mb-10">
