@@ -7,7 +7,6 @@ export default function Pricing() {
         Training Prices
       </h3>
       <h2 className="text-center text-3xl text-white font-bold">
-        {" "}
         Book your training
       </h2>
       <div className="flex flex-grow gap-5 item-center justify-center mt-16">
