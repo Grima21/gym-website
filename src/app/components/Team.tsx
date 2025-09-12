@@ -4,14 +4,16 @@ import { coach } from "@/app/data/coach"; // ajusta la ruta si tu archivo está 
 
 export default function Coaches() {
   return (
-    <section className="max-w-screen-2xl mx-auto mt-20 mb-28 ">
-      <h2 className="text-[#FFD60A] text-3xl font-bold">Meet Our Coaches</h2>
-      <p className="text-xl text-white">
+    <section className="max-w-screen-2xl mx-auto mt-20 mb-28 px-4 ">
+      <h2 className="text-[#FFD60A] text-3xl text-[clamp(24px,3vw,30px)] font-bold">
+        Meet Our Coaches
+      </h2>
+      <p className="text-xl text-[clamp(16px,3vw,20px)] text-white">
         Certified trainers dedicated to your success.
       </p>
       <div
         className=" mx-auto
-    grid gap-6 md:grid-cols-2 mt-12"
+    grid gap-6 md:grid-cols-2 mt-12 "
       >
         {coach.map((c) => (
           <article
