@@ -28,21 +28,21 @@ export default function AboutUs() {
 
   return (
     <section className="max-w-screen-2xl  mx-auto mt-40 mb-28">
-      <div className="mx-auto flex gap-16 justify-center items-center">
+      <div className="w-full mx-auto flex flex-col items-center gap-16 lg:flex-row md:justify-center  md:px-8 ">
         {/* left */}
         <div className="max-w-[465px]">
-          <h2 className="text-center text-3xl font-bold text-white tracking-wide mb-10">
+          <h2 className="text-center  text-[clamp(25px,3vw,35px)] font-bold text-white tracking-wide mb-10">
             About Us
           </h2>
-          <p className="text-justify text-xl font-medium mb-10">
+          <p className="text-justify text-[clamp(12px,2.5vw,24px)] font-medium mb-10">
             At Brand Gym, we believe fitness is more than training — it’s a
             lifestyle. With certified coaches, modern equipment, and a
             community-driven spirit, we help you unlock your true potential.
           </p>
           <button
-            className="
+            className=" w-full
             justify-self-end
-            w-[120px] h-11 rounded-xl
+            lg:w-[140px] h-11 rounded-xl
             bg-boton text-black font-semibold
             hover:bg-boton-hover transition
             focus:outline-none focus:ring-2 focus:ring-[#FFD60A]/70  mb-10
@@ -63,7 +63,7 @@ export default function AboutUs() {
           </div>
         </div>
         {/* right */}
-        <div className="flex gap-8">
+        <div className="flex gap-2 lg:gap-8">
           {gallery.map((photos) => (
             <div key={photos.id}>
               <Image

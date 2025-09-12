@@ -3,117 +3,173 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { CardService } from "@/app/data/service";
 import { program } from "../data/program";
-import { div } from "framer-motion/client";
 
+/* -------------------- Card reusable -------------------- */
 function Card({
   title,
   description,
   image,
   alt,
-  w,
-  h,
   className = "",
+  overlay = true,
 }: {
   title: string;
   description: string;
   image: string;
   alt: string;
-  w: number;
-  h: number;
   className?: string;
+  overlay?: boolean;
 }) {
   return (
     <div
-      className={`relative overflow-hidden rounded-[24px] ${className}`}
-      style={{ width: `${w}px`, height: `${h}px` }}
+      className={`
+        group  relative w-full overflow-hidden rounded-2xl 
+        ${className}
+      `}
     >
-      <Image src={image} alt={alt} fill className="object-cover" />
-      {/* overlay + textos (ajústalo a tu estilo) */}
-      <div className="absolute inset-x-4 bottom-4 rounded-xl bg-black/35 p-4 text-white">
-        <h3 className="text-lg font-semibold">{title}</h3>
-        <p className="text-sm opacity-90">{description}</p>
+      <Image
+        src={image}
+        alt={alt}
+        fill
+        priority={false}
+        sizes="
+          (max-width: 768px) 100vw,
+          (max-width: 1024px) 70vw,
+          (max-width: 1280px) 50vw,
+          600px
+        "
+        className="object-cover group-transition-transform duration-300 hover:scale-105
+         hover:translate-y-0"
+      />
+
+      {/* Overlay opcional para mejorar contraste */}
+      {overlay && (
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+      )}
+
+      {/* Texto */}
+      <div className="absolute inset-x-4 bottom-4 text-white drop-shadow">
+        <p className="opacity-90 text-[clamp(12px,1.8vw,16px)] font-semibold">
+          {description}
+        </p>
+        <h3 className=" font-semibold text-[clamp(16px,2.2vw,25px)] group-hover:text-[#FFD60A]">
+          {title}
+        </h3>
       </div>
     </div>
   );
 }
 
+/* -------------------- Section -------------------- */
 export default function Service() {
-  // sacamos cada card por id para ubicarla como en Figma
+  // Saco cada card por id
   const functional = CardService.find((c) => c.id === 1)!; // wide
   const yoga = CardService.find((c) => c.id === 2)!;
   const crossfit = CardService.find((c) => c.id === 3)!;
   const boxing = CardService.find((c) => c.id === 4)!;
 
   return (
-    <div className="max-w-screen-2xl mx-auto">
-      <section
-        className="
-     
-        mx-auto
-        mt-16
-        flex items-start
-        gap-[150px]              /* gap central izquierda ↔ derecha */
-        "
-        style={{ width: `${functional.w + 100 + boxing.w}px` }} // ancho total exacto
-      >
-        {/* Grupo izquierdo: grid de 2 cols con gap de 46 y 72 */}
-        <div
-          className="
-          grid
-          [grid-template-columns:257.1px_247.52px]
-          gap-x-[150px] gap-y-[20px]
-        "
-        >
-          {/* TOP: Functional (ocupa 2 columnas) */}
-          <div className="col-span-2">
-            <Card {...functional} />
-          </div>
-
-          {/* BOTTOM: Yoga (col 1) y CrossFit (col 2) */}
-          <Card {...yoga} />
-          <Card {...crossfit} />
+    <div className="mx-auto w-full max-w-[1280px] xl:max-w-[1500px] px-6">
+      {/* ====== GRID de tarjetas (Responsive) ====== */}
+      <section className="mt-16 grid gap-6 md:gap-8 lg:grid-cols-12">
+        {/* Functional - ancho (arriba izquierda) */}
+        <div className="lg:col-span-8">
+          <Card
+            {...functional}
+            className="
+              aspect-[4/5] md:aspect-[5/3] lg:aspect-[16/10]
+            "
+          />
         </div>
 
-        {/* Derecha: Boxing */}
-        <Card {...boxing} />
+        {/* Boxing - alto (arriba derecha) */}
+        <div className="lg:col-span-4">
+          <Card
+            {...boxing}
+            className="
+              aspect-[4/5] md:aspect-[121/75] lg:aspect-[3/4]
+            "
+          />
+        </div>
+
+        {/* Yoga - abajo izquierda */}
+        <div className="lg:col-span-4">
+          <Card
+            {...yoga}
+            className="
+              aspect-[4/5] md:aspect-[4/3]
+            "
+          />
+        </div>
+
+        {/* CrossFit - abajo centro */}
+        <div className="lg:col-span-4">
+          <Card
+            {...crossfit}
+            className="
+              aspect-[4/5] md:aspect-[4/3]
+            "
+          />
+        </div>
+        <div className="lg:col-span-4">
+          <Card
+            {...crossfit}
+            className="
+              aspect-[4/5] md:aspect-[4/3]
+            "
+          />
+        </div>
+
+        {/* Puedes dejar el último espacio (lg:col-span-4) vacío o usarlo para otra tarjeta/CTA */}
       </section>
-      <section className="mt-20 ">
-        <h2 className="text-2xl  text-center">
-          Fuel your body. Train your <br /> mind.
+
+      {/* ====== Copy / claim ====== */}
+      <section className="mt-16 mb-16 text-center">
+        <h2 className="text-[clamp(20px,3vw,30px)] leading-tight">
+          Fuel your body. Train your <br className="hidden sm:block" />
+          mind.{" "}
           <span className="text-[#FFD60A]">
-            Unlock your full <br /> potential.
+            Unlock your full <br className="hidden sm:block" /> potential.
           </span>
         </h2>
+      </section>
 
-        <div className="max-w-full mx-auto px-6 mt-10">
+      {/* ====== Program list (Responsive table-like) ====== */}
+      <section className="mt-10">
+        <div className="mx-auto w-full">
           {program.map((item) => (
             <div
               key={item.id}
               className="
-        grid items-center
-        grid-cols-[120px_1fr_1.2fr_32px]
-        gap-x-20
-        py-8
-        border-t-2 border-white/30
-      "
+              
+                grid gap-10 items-center py-6
+                border-t-4 border-white/20
+                /* Mobile: stack */
+                grid-cols-1
+                /* md+: tabla alineada */
+                md:grid-cols-[88px_1fr_auto]
+              "
             >
-              {/* Imagen: frame fijo */}
-              <div className="relative w-[120px] h-[80px] rounded-2xl overflow-hidden">
+              {/* Imagen */}
+              <div className="relative w-[100px] h-[100px] rounded-xl overflow-hidden md:justify-self-start">
                 <Image
                   src={item.img}
                   alt={item.alt}
                   fill
                   className="object-cover"
+                  sizes="(max-width:768px) 90px, 90px"
                 />
               </div>
 
-              {/* Título: alineado a la izquierda */}
-              <h3 className="text-3xl font-bold text-white">{item.title}</h3>
-
-              {/* Descripción: más ancho, sin centrar */}
-              <p className="text-lg font-medium text-white/90 leading-relaxed">
-                {item.description}
-              </p>
+              {/* Título + descripción (stack en mobile, fila en md+) */}
+              <div className="flex flex-col ">
+                <h3 className="text-[clamp(25px,2.4vw,32px)] font-bold text-white">
+                  {item.title}
+                </h3>
+                <p className="text-[clamp(20px,1.8vw,24px)] text-white/85 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
 
               {/* Flecha */}
               <button
@@ -126,7 +182,7 @@ export default function Service() {
           ))}
 
           {/* borde inferior final */}
-          <div className="border-t border-white/30" />
+          <div className="border-t-4 border-white/20" />
         </div>
       </section>
     </div>

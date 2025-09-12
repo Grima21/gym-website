@@ -13,8 +13,7 @@ export const CardService: ServiceCard[] = [
   {
     id: 1,
     title: "Functional Training",
-    description:
-      "Build strength, agility, and endurance with bodyweight-focused workouts.",
+    description: "For everyday power",
     image: "/img-service/gym.webp",
     alt: "Athlete doing push-ups in a gym",
     w: 790,
@@ -23,8 +22,7 @@ export const CardService: ServiceCard[] = [
   {
     id: 2,
     title: "Yoga & Flexibility",
-    description:
-      "Improve balance, reduce stress, and enhance mobility through guided yoga sessions.",
+    description: "Calm. Strength. Harmony.",
     image: "/img-service/yoga.webp",
     alt: "Woman doing yoga on a mat",
     w: 380.1,
@@ -33,8 +31,16 @@ export const CardService: ServiceCard[] = [
   {
     id: 3,
     title: "CrossFit & Conditioning",
-    description:
-      "Push your limits with high-intensity workouts designed for real results.",
+    description: "Push your limits.",
+    image: "/img-service/crossfit.webp",
+    alt: "Man lifting kettlebell",
+    w: 380,
+    h: 345,
+  },
+  {
+    id: 5,
+    title: "CrossFit & Conditioning",
+    description: "High-Intensity Strength",
     image: "/img-service/crossfit.webp",
     alt: "Man lifting kettlebell",
     w: 380,
@@ -43,8 +49,7 @@ export const CardService: ServiceCard[] = [
   {
     id: 4,
     title: "Boxing Classes",
-    description:
-      "Train like a fighter with expert-led boxing sessions to boost confidence and power.",
+    description: "Power. Speed. Precision.",
     image: "/img-service/boxing.webp",
     alt: "Boxer throwing punch in the ring",
     w: 538.26,
