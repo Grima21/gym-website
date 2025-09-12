@@ -22,21 +22,10 @@ import { Menu, X } from "lucide-react";
 
 const links = ["Home", "About Us", "Team", "Classes", "Plans"];
 
-// Variantes simples
-const navbarIn = {
-  hidden: { opacity: 0, y: -12 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.35 } },
-};
-
 const panelVariants = {
   hidden: { opacity: 0, y: -8 },
   show: { opacity: 1, y: 0, transition: { duration: 0.25 } },
   exit: { opacity: 0, y: -8, transition: { duration: 0.2 } },
-};
-
-const buttonInteractive = {
-  whileTap: { scale: 0.98 },
-  whileHover: { y: -1 },
 };
 
 export default function Hero() {
