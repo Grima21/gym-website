@@ -10,7 +10,7 @@ const tweenFast: Transition = {
 };
 
 export const fadeIn: Variants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 2 },
   show: { opacity: 1, transition: tweenFast },
 };
 
@@ -35,7 +35,7 @@ export const photoIn: Variants = {
 };
 
 export const navbarIn: Variants = {
-  hidden: { opacity: 0, y: -8 },
+  hidden: { opacity: 0, y: -10 },
   show: { opacity: 1, y: 0, transition: tweenFast },
 };
 
@@ -50,6 +50,6 @@ export const stagger = (
 });
 
 export const buttonInteractive = {
-  whileHover: { scale: 1.03, y: -1 },
+  whileHover: { scale: 1.03, y: -2 },
   whileTap: { scale: 0.98 },
 };

@@ -59,7 +59,7 @@ export default function Hero() {
           src="/logo-fondo/fondo-humo.webp"
           alt="Fondo general"
           fill
-          className="object-cover pointer-events-none select-none"
+          className="object-cover pointer-events-none select-none "
           priority
         />
       </motion.div>
@@ -108,7 +108,7 @@ export default function Hero() {
           {/* CTA desktop */}
           <motion.button
             {...buttonInteractive}
-            className=" text-center justify-center
+            className=" text-center justify-center items-center
             hidden md:inline-flex overflow-hidden
             w-[120px] h-11 rounded-xl
             bg-boton text-black font-semibold
@@ -197,7 +197,7 @@ export default function Hero() {
         <div className=" max-w-[1500px] p-4 mx-auto mb-3 flex flex-col justify-center item-center gap-16 lg:flex-row md:justify-around  md:gap-3">
           {/* TEXTO delante con stagger */}
           <motion.div
-            variants={stagger(0.1, 0)}
+            variants={stagger(0.3, 0)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}

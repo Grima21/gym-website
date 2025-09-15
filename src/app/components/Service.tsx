@@ -3,6 +3,14 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { CardService } from "@/app/data/service";
 import { program } from "../data/program";
+import { motion } from "framer-motion";
+import {
+  fadeIn,
+  fadeUp,
+  fadeUpTitle,
+  stagger,
+  buttonInteractive,
+} from "@/lib/motion";
 
 /* -------------------- Card reusable -------------------- */
 function Card({
@@ -21,42 +29,66 @@ function Card({
   overlay?: boolean;
 }) {
   return (
-    <div
-      className={`
-        group  relative w-full overflow-hidden rounded-2xl 
-        ${className}
-      `}
+    <motion.article
+      variants={fadeUp} // entrada de cada card
+      whileHover={{ y: -2 }} // micro-interacción sutil
+      transition={{ type: "tween", duration: 0.25 }}
+      className={`group relative w-full overflow-hidden rounded-2xl ${className}`}
     >
-      <Image
-        src={image}
-        alt={alt}
-        fill
-        priority={false}
-        sizes="
-          (max-width: 768px) 100vw,
-          (max-width: 1024px) 70vw,
-          (max-width: 1280px) 50vw,
-          600px
-        "
-        className="object-cover group-transition-transform duration-300 hover:scale-105
-         hover:translate-y-0"
-      />
+      {/* Wrapper animable para la imagen */}
+      <motion.div
+        aria-hidden
+        initial={false}
+        whileHover={{ scale: 1.03 }}
+        transition={{ type: "tween", duration: 0.35, ease: "easeOut" }}
+        className="absolute inset-0 will-change-transform"
+      >
+        <Image
+          src={image}
+          alt={alt}
+          fill
+          priority={false}
+          sizes="
+            (max-width: 768px) 100vw,
+            (max-width: 1024px) 70vw,
+            (max-width: 1280px) 50vw,
+            600px
+          "
+          className="object-cover"
+        />
+      </motion.div>
 
       {/* Overlay opcional para mejorar contraste */}
       {overlay && (
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+        <motion.div
+          aria-hidden
+          initial={{ opacity: 0.25 }}
+          whileHover={{ opacity: 0.4 }}
+          transition={{ type: "tween", duration: 0.25 }}
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
+        />
       )}
 
-      {/* Texto */}
-      <div className="absolute inset-x-4 bottom-4 text-white drop-shadow">
-        <p className="opacity-90 text-[clamp(12px,1.8vw,16px)] font-semibold">
+      {/* Texto (con pequeño stagger interno) */}
+      <motion.div
+        variants={stagger(0.08)}
+        className="absolute inset-x-4 bottom-4 text-white drop-shadow"
+      >
+        <motion.p
+          variants={fadeUp}
+          className="opacity-90 text-[clamp(12px,1.8vw,16px)] font-semibold"
+        >
           {description}
-        </p>
-        <h3 className=" font-semibold text-[clamp(16px,2.2vw,25px)] group-hover:text-[#FFD60A]">
+        </motion.p>
+
+        <motion.h3
+          variants={fadeUpTitle}
+          className="font-semibold text-[clamp(16px,2.2vw,25px)] group-hover:text-[#FFD60A]"
+        >
           {title}
-        </h3>
-      </div>
-    </div>
+        </motion.h3>
+      </motion.div>
+    </motion.article>
   );
 }
 
@@ -71,14 +103,18 @@ export default function Service() {
   return (
     <div className="mx-auto w-full max-w-[1280px] xl:max-w-[1500px] px-6">
       {/* ====== GRID de tarjetas (Responsive) ====== */}
-      <section className="mt-16 grid gap-6 md:gap-8 lg:grid-cols-12">
+      <motion.section
+        variants={stagger(0.09)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }} // dispara al entrar 20% en viewport
+        className="mt-16 grid gap-6 md:gap-8 lg:grid-cols-12"
+      >
         {/* Functional - ancho (arriba izquierda) */}
         <div className="lg:col-span-8">
           <Card
             {...functional}
-            className="
-              aspect-[4/5] md:aspect-[5/3] lg:aspect-[16/10]
-            "
+            className="aspect-[4/5] md:aspect-[5/3] lg:aspect-[319/150]"
           />
         </div>
 
@@ -86,67 +122,60 @@ export default function Service() {
         <div className="lg:col-span-4">
           <Card
             {...boxing}
-            className="
-              aspect-[4/5] md:aspect-[121/75] lg:aspect-[3/4]
-            "
+            className="aspect-[4/5] md:aspect-[121/75] lg:aspect-[77/75]"
           />
         </div>
 
         {/* Yoga - abajo izquierda */}
         <div className="lg:col-span-4">
-          <Card
-            {...yoga}
-            className="
-              aspect-[4/5] md:aspect-[4/3]
-            "
-          />
+          <Card {...yoga} className="aspect-[4/5] md:aspect-[4/3]" />
         </div>
 
         {/* CrossFit - abajo centro */}
         <div className="lg:col-span-4">
-          <Card
-            {...crossfit}
-            className="
-              aspect-[4/5] md:aspect-[4/3]
-            "
-          />
-        </div>
-        <div className="lg:col-span-4">
-          <Card
-            {...crossfit}
-            className="
-              aspect-[4/5] md:aspect-[4/3]
-            "
-          />
+          <Card {...crossfit} className="aspect-[4/5] md:aspect-[4/3]" />
         </div>
 
-        {/* Puedes dejar el último espacio (lg:col-span-4) vacío o usarlo para otra tarjeta/CTA */}
-      </section>
+        {/* CrossFit duplicado - abajo derecha */}
+        <div className="lg:col-span-4">
+          <Card {...crossfit} className="aspect-[4/5] md:aspect-[4/3]" />
+        </div>
+      </motion.section>
 
       {/* ====== Copy / claim ====== */}
-      <section className="mt-16 mb-16 text-center">
-        <h2 className="text-[clamp(20px,3vw,30px)] leading-tight">
+      <motion.section
+        variants={stagger(0.06)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        className="mt-16 mb-16 text-center"
+      >
+        <motion.h2
+          variants={fadeUpTitle}
+          className="text-[clamp(20px,3vw,30px)] leading-tight"
+        >
           Fuel your body. Train your <br className="hidden sm:block" />
           mind.{" "}
           <span className="text-[#FFD60A]">
             Unlock your full <br className="hidden sm:block" /> potential.
           </span>
-        </h2>
-      </section>
+        </motion.h2>
+      </motion.section>
 
       {/* ====== Program list (Responsive table-like) ====== */}
       <section className="mt-10">
         <div className="mx-auto w-full">
           {program.map((item) => (
-            <div
+            <motion.div
               key={item.id}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.15 }}
               className="
-              
                 grid gap-10 items-center py-6
                 border-t-4 border-white/20
-                /* Mobile: stack */
                 grid-cols-1
-                /* md+: tabla alineada */
                 md:grid-cols-[88px_1fr_auto]
               "
             >
@@ -161,8 +190,8 @@ export default function Service() {
                 />
               </div>
 
-              {/* Título + descripción (stack en mobile, fila en md+) */}
-              <div className="flex flex-col ">
+              {/* Título + descripción */}
+              <div className="flex flex-col">
                 <h3 className="text-[clamp(25px,2.4vw,32px)] font-bold text-white">
                   {item.title}
                 </h3>
@@ -172,13 +201,14 @@ export default function Service() {
               </div>
 
               {/* Flecha */}
-              <button
+              <motion.button
+                {...buttonInteractive}
                 aria-label={`Go to ${item.title}`}
-                className="justify-self-end shrink-0 p-2 rounded-full hover:bg-white/10"
+                className="justify-self-end shrink-0 p-2 rounded-full hover:bg-white/10 focus-visible:bg-white/10 outline-none"
               >
                 <ArrowRight className="w-6 h-6" />
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
           ))}
 
           {/* borde inferior final */}
