@@ -118,19 +118,19 @@ export default function Pricing() {
                   variants={fadeUp}
                   className="text-[clamp(14px,1vw,18px)] font-semibold text-black"
                 >
-                  {monthly} <span className="text-sm">/ month</span>
+                  {monthly}
                 </motion.p>
                 <motion.p
                   variants={fadeUp}
                   className="text-[clamp(14px,1vw,18px)] font-semibold text-black"
                 >
-                  {monthly3} <span className="text-sm">/ month</span>
+                  {monthly3}
                 </motion.p>
                 <motion.p
                   variants={fadeUp}
                   className="text-[clamp(14px,1vw,18px)] font-semibold text-black"
                 >
-                  {yearly} <span className="text-sm">/ year</span>
+                  {yearly}
                 </motion.p>
 
                 {/* Features */}

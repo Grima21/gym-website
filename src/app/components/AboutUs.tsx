@@ -45,7 +45,10 @@ export default function AboutUs() {
         className="w-full mx-auto flex flex-col items-center gap-16 lg:flex-row md:justify-center md:px-8"
       >
         {/* left */}
-        <motion.div variants={stagger(0.08)} className="max-w-[465px]">
+        <motion.div
+          variants={stagger(0.08)}
+          className="w-full max-w-[465px] p-4"
+        >
           <motion.h2
             variants={fadeUpTitle}
             className="text-center text-[clamp(25px,3vw,35px)] font-bold text-white tracking-wide mb-10"
@@ -62,22 +65,17 @@ export default function AboutUs() {
             community-driven spirit, we help you unlock your true potential.
           </motion.p>
 
-          {/* <motion.button
-            variants={fadeUp}
-            {...buttonInteractive}
-            className="w-full lg:w-[140px] h-11 rounded-xl bg-boton text-black font-semibold hover:bg-boton-hover transition focus:outline-none focus:ring-2 focus:ring-[#FFD60A]/70 mb-10"
-          >
-            Learn more
-          </motion.button> */}
-
-          <button className="group relative h-12 overflow-hidden overflow-x-hidden rounded-md bg-boton px-8 py-2 text-black font-semibold">
-            <span className="relative z-10 ">Hover Me</span>
+          <button className="w-full group relative lg:w-36 h-12 overflow-hidden overflow-x-hidden rounded-md bg-boton px-8 py-2 text-black font-semibold mb-4">
+            <span className="relative z-10 "> Join us</span>
             <span className="absolute inset-0 overflow-hidden rounded-md">
               <span className="absolute left-0 aspect-square w-full origin-center -translate-x-full rounded-full bg-yellow-500 transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>
             </span>
           </button>
 
-          <motion.div variants={stagger(0.07)} className="flex gap-10 w-full">
+          <motion.div
+            variants={stagger(0.07)}
+            className="flex gap-10 w-full p-4 items-center justify-center"
+          >
             {stats.map((c, index) => (
               <motion.div
                 key={index}
@@ -86,17 +84,22 @@ export default function AboutUs() {
                 transition={{ type: "tween", duration: 0.2 }}
                 className="select-none"
               >
-                <h3 className="flex gap-2 text-3xl text-[#FFD60A] items-center">
+                <h3 className="flex gap-2 text-[clamp(18px,2vw,30px)] text-[#FFD60A]  items-center">
                   {c.value} <c.icon />
                 </h3>
-                <span className="text-lg font-semibold">{c.label}</span>
+                <span className="text-lg text-[clamp(12px,2vw,18px)] font-semibold">
+                  {c.label}
+                </span>
               </motion.div>
             ))}
           </motion.div>
         </motion.div>
 
         {/* right */}
-        <motion.div variants={stagger(0.08)} className="flex gap-2 lg:gap-8">
+        <motion.div
+          variants={stagger(0.08)}
+          className="flex gap-2 lg:gap-8 p-4"
+        >
           {gallery.map((photo) => (
             <motion.div
               key={photo.id}

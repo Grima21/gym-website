@@ -81,7 +81,9 @@ export default function Footer() {
                   key={i}
                   variants={fadeUp}
                   whileHover={{ y: -2 }}
-                  href="#"
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={`Go to ${Icon.name}`}
                   className="inline-flex"
                 >

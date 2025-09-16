@@ -7,7 +7,7 @@ export const plans = [
     description: "Train like a fighter",
     icon: Activity, // o Target
     monthly: "Monthly: $39",
-    monthly3: "3 Months: $99/ 3",
+    monthly3: "3 Months: $99",
     yearly: "Yearly: $299/",
 
     features: [
@@ -23,7 +23,7 @@ export const plans = [
     description: "High-intensity workouts",
     icon: Dumbbell,
     monthly: "Monthly: $49",
-    monthly3: "3 Months: $129/ 3",
+    monthly3: "3 Months: $129",
     yearly: "Yearly: $399",
     features: [
       "Unlimited CrossFit sessions",
@@ -38,13 +38,13 @@ export const plans = [
     description: "Unlimited equipment access",
     icon: Weight,
     monthly: "Monthly: $29",
-    monthly3: "3 Months: $79/ 3",
+    monthly3: "3 Months: $79",
     yearly: "Yearly: $249",
     features: [
       "Full equipment access",
       "Basic coaching guidance",
       "Flexible schedules",
-      "Flexible schedules",
+      "Basic nutrition guidance",
     ],
   },
   {
@@ -53,7 +53,7 @@ export const plans = [
     description: "All-in-one experience",
     icon: Crown, // o Award
     monthly: "Monthly: $69",
-    monthly3: "3 Months: $179/ 3",
+    monthly3: "3 Months: $179",
     yearly: "Yearly: $549",
 
     premium: true,
