@@ -55,7 +55,7 @@ export default function AboutUs() {
 
           <motion.p
             variants={fadeUp}
-            className="text-justify text-[clamp(12px,2.5vw,24px)] font-medium mb-10"
+            className="text-justify text-[clamp(12px,2.5vw,22px)]  mb-10"
           >
             At Brand Gym, we believe fitness is more than training — it’s a
             lifestyle. With certified coaches, modern equipment, and a

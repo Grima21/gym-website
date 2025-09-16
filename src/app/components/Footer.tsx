@@ -3,14 +3,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 import { fadeUp, fadeUpTitle, stagger, buttonInteractive } from "@/lib/motion";
-import {
-  Facebook,
-  Phone,
-  Instagram,
-  X,
-  MapIcon,
-  BicepsFlexed,
-} from "lucide-react";
+import { Facebook, Phone, Instagram, X, MapIcon, Clock } from "lucide-react";
 
 export default function Footer() {
   const exploreLinks = [
@@ -23,17 +16,17 @@ export default function Footer() {
   const servicesLinks = [
     { name: "Team", href: "#" },
     { name: "About Us", href: "#" },
-    { name: "Coming Soon", href: "#" },
+    { name: "Classes & Pricing", href: "#" },
   ];
 
   const contactInfo = [
     { type: "Address", value: "26 Street, New York, NY 98", icon: MapIcon },
     { type: "Phone", value: "0-900-856-05-39", icon: Phone },
-    { type: "Working Hours", value: "Mon-Fri: 8am - 4pm", icon: BicepsFlexed },
+    { type: "Working Hours", value: "Mon-Fri: 8am - 4pm", icon: Clock },
   ];
 
   return (
-    <footer className="w-full max-w-screen-2xl mx-auto mt-20 mb-20 px-4">
+    <footer className="w-full max-w-screen-2xl mx-auto mt-20 mb-20 px-4 py-10 md:py-16">
       {/* Top: newsletter + social */}
       <motion.section
         variants={stagger(0.08)}
@@ -51,14 +44,14 @@ export default function Footer() {
             className="text-[#FFD60A] text-[clamp(12px,2vw,18px)] font-semibold"
           >
             Subscribe to get updates <br />
-            <span className="text-[clamp(14px,3vw,20px)] text-white">
+            <span className="text-[clamp(14px,3vw,20px)] text-gray-200 font-extrabold">
               fitness tips, and exclusive offers.
             </span>
           </motion.p>
 
           <motion.div
             variants={stagger(0.05)}
-            className="flex flex-col gap-4 md:justify-between"
+            className="flex flex-col gap-8 lg:flex-row lg justify-between  "
           >
             <motion.div
               variants={fadeUp}
@@ -69,8 +62,8 @@ export default function Footer() {
               <input
                 type="email"
                 inputMode="email"
-                placeholder="Your email"
-                className="w-64 h-11 bg-[#FFD60A] rounded-xl text-base text-neutral-700 px-4 placeholder-neutral-700/70 outline-none focus:ring-2 focus:ring-yellow-400/60"
+                placeholder="Enter your email"
+                className="w-full h-11 bg-[#FFD60A] rounded-xl text-base text-neutral-700 px-4 placeholder-neutral-700/70 outline-none focus:ring-2 focus:ring-yellow-400/60"
                 aria-label="Email address"
               />
               <motion.button
@@ -82,7 +75,7 @@ export default function Footer() {
               </motion.button>
             </motion.div>
 
-            <motion.div variants={stagger(0.05)} className="flex gap-5">
+            <motion.div variants={stagger(0.05)} className="flex gap-4 mt-3 ">
               {[Facebook, Instagram, X].map((Icon, i) => (
                 <motion.a
                   key={i}
@@ -92,7 +85,7 @@ export default function Footer() {
                   aria-label={`Go to ${Icon.name}`}
                   className="inline-flex"
                 >
-                  <Icon className="text-[#FFD60A] w-8 h-8 hover:text-yellow-500 cursor-pointer" />
+                  <Icon className="text-[#FFD60A] w-6 h-6 md:w-8 md:h-8 hover:text-yellow-500 cursor-pointer" />
                 </motion.a>
               ))}
             </motion.div>
@@ -152,7 +145,7 @@ export default function Footer() {
                 <motion.li key={index} variants={fadeUp}>
                   <a
                     href={e.href}
-                    className="text-[clamp(14px,2vw,16px)] hover:text-[#FFD60A] inline-block"
+                    className="text-[clamp(14px,2vw,16px)] hover:text-[#FFD60A] inline-block transition-transform duration-300 hover:scale-110"
                   >
                     {e.name}
                   </a>
@@ -173,7 +166,7 @@ export default function Footer() {
                 <motion.li key={index} variants={fadeUp}>
                   <a
                     href={s.href}
-                    className="text-[clamp(14px,2vw,16px)] hover:text-[#FFD60A] inline-block"
+                    className="text-[clamp(14px,2vw,16px)] hover:text-[#FFD60A] inline-block transition-transform duration-300 hover:scale-110"
                   >
                     {s.name}
                   </a>
@@ -212,6 +205,9 @@ export default function Footer() {
           </ul>
         </motion.div>
       </motion.section>
+      <p className="text-center font-bold text-[#FFD60A] mt-8">
+        © 2025 Fitness Gym. All rights reserved
+      </p>
     </footer>
   );
 }
