@@ -1,7 +1,7 @@
 export const program = [
   {
     id: 1,
-    title: "Bobybuilding",
+    title: "Bodybuilding",
     description: "Sculpt your physique with tailored hypertrophy programs.",
     img: "/img-service/bodybuilding.webp",
     alt: "Bodybuilder flexing muscles",
